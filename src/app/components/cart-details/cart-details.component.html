@@ -11,8 +11,9 @@
 
                 <tr *ngFor="let temp of cartItems">
                     <td>
-                        <p>{{ temp.title }}</p>
-                        <p>{{ temp.unitPrice | currency: 'INR' }}</p>
+                        <p>Title: {{ temp.title }}</p>
+                        <p>Author: {{ temp.author }}</p>
+                        <p>Price: {{ temp.unitPrice | currency: 'INR' }}</p>
                     </td>
                     <td>
                         <div class="items">

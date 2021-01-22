@@ -22,6 +22,10 @@ export class BookListComponent implements OnInit {
 
   public filter: any = this.appcomponent.filter;
 
+  public showAuthor:boolean = true;
+  public showIsbn:boolean = true;
+  public showLang:boolean = true;
+
 
   constructor(private productService: ProductService,
               public cartService: CartService,
