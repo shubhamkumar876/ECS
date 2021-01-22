@@ -3,10 +3,13 @@
   <!-- MENU SIDEBAR-->
   <aside class="menu-sidebar d-none d-lg-block">
       <div class="logo">
-          
+        
+         <a routerLink="/books" style="font-weight: bolder;">ECS-Book cart</a> 
       </div>
 
-      
+      <div>
+        <a routerLink="/cart" class="btn btn-primary" style="margin-top: 20%;margin-left: 15%;">Cart</a>
+      </div>
 
   </aside>
   <!-- END MENU SIDEBAR-->
@@ -20,7 +23,7 @@
               <div class="container-fluid">
                   <div class="header-wrap">
 
-                    <input class="form-control" type="text" name="search" [(ngModel)]="filter"> 
+                    <input class="form-control" style="width: 35%;" placeholder="search" type="text" name="search" [(ngModel)]="filter"> 
                       
                   </div>
                   <div class="account-wrap"></div>
@@ -32,9 +35,9 @@
 
       <!-- MAIN CONTENT-->
 
-      <!-- <router-outlet></router-outlet> -->
+      <router-outlet></router-outlet>
 
-      <app-book-list></app-book-list>
+      <!-- <app-book-list></app-book-list> -->
 
       <!--<app-product-list></app-product-list>-->
 

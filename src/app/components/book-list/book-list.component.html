@@ -8,31 +8,32 @@
                             <th class="col-4" (click)="sort('title')">Title
                                 <span class="glyphicon" *ngIf="key =='title'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                             </th>
-                            <th class="col-3" (click)="sort('authors')">Author
+                            <th class="col-2">Author
                                 <span class="glyphicon" *ngIf="key =='authors'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                             </th>
-                            <th class="col-2" (click)="sort('average_rating')">Rating
+                            <th class="col-1" (click)="sort('average_rating')">Rating
                                 <span class="glyphicon" *ngIf="key =='average_rating'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                             </th>
-                            <th>ISBN</th>
-                            <th>Language</th>
-                            <th (click)="sort('price')">Price
+                            <th class="col-2">ISBN</th>
+                            <th class="col-1">Language</th>
+                            <th class="col-1" (click)="sort('price')">Price
                                 <span class="glyphicon sort-icon" *ngIf="key =='price'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                             </th>
-                            <th>Add to cart</th>
+                            <th class="col-1">Add to cart</th>
                         </tr>
                     </thead>
                     <tr class="d-flex" *ngFor="let temp of books | orderBy: key : reverse | filter:appcomponent.filter | paginate: { itemsPerPage: 10, currentPage: p }">
                         <td class="col-4">{{ temp.title }}</td>
-                        <td class="col-3">{{ temp.authors }}</td>
-                        <td class="col-2">{{ temp.average_rating}}
+                        <td class="col-2">{{ temp.authors }}</td>
+                        <td class="col-1">
+                            <ngb-rating [max]="5" [(rate)]="temp.average_rating" [readonly]="false"></ngb-rating>
                             ({{ temp.ratings_count}})
                         </td>
-                        <td style="text-align: left;">{{ temp.isbn }}</td>
-                        <td>{{ temp.language_code }}</td>
-                        <td>{{ temp.price }}</td>
-                        <td style="align-content: flex-end;">
-                            <button class="btn btn-info" (click)="sorting()">Add</button>
+                        <td class="col-2" style="text-align: left;">{{ temp.isbn }}</td>
+                        <td class="col-1">{{ temp.language_code }}</td>
+                        <td class="col-1">{{ temp.price }}</td>
+                        <td class="col-1" style="align-content: flex-end;">
+                            <button class="btn btn-info" (click)="addToCart(temp)">Add</button>
                         </td>
                     </tr>
                     <pagination-controls (pageChange)="p = $event"></pagination-controls>

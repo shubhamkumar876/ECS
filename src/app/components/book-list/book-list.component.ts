@@ -3,6 +3,9 @@ import { Books } from 'src/app/common/books';
 import { ProductService } from 'src/app/services/product.service';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
+import { CartItem } from 'src/app/common/cart-item';
+import { CartService } from 'src/app/services/cart.service';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-book-list',
@@ -19,7 +22,9 @@ export class BookListComponent implements OnInit {
 
   public filter: any = this.appcomponent.filter;
 
+
   constructor(private productService: ProductService,
+              public cartService: CartService,
               public appcomponent: AppComponent) { }
 
   ngOnInit(): void {
@@ -32,38 +37,24 @@ export class BookListComponent implements OnInit {
       }
     );
 
-    //this.sorting();
-
     }
 
     //sorting
-  key: string = 'name'; //set default
+  key: string = 'price'; //set default
   reverse: boolean = false;
   sort(key:any){
     this.key = key;
     this.reverse = !this.reverse;
   }
 
-    sorting() {
-      this.books = this.sortedBooks.sort((n1,n2) => {
-        if (n1.price > n2.price) {
-            return 1;
-        }
-    
-        if (n1.price < n2.price) {
-            return -1;
-        }
-    
-        return 0;
-    });
-
-    console.log("books.len = " + this.books.length);
-    console.log("sortedbooks.len  = " + this.sortedBooks.length);
+  addToCart(theProduct: Books) {
+    console.log(`Adding to cart: ${ theProduct.title }, ${ theProduct.price}`);
   
-    for (let temp of this.sortedBooks) {
-      console.log("sorted = " + temp.price);
-      
-    }
-    }
+    const theCartItem = new CartItem(theProduct);
+  
+    this.cartService.addToCart(theCartItem);
+  
+  }
+
 
 }
