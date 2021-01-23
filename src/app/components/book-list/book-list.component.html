@@ -22,7 +22,7 @@
                             <th class="col-1" (click)="sort('price')">Price
                                 <span class="glyphicon sort-icon" *ngIf="key =='price'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                             </th>
-                            <th class="col-1">Add to cart</th>
+                            <th routerLink="/cart" class="col-1">Add to cart</th>
                         </tr>
                     </thead>
                     <tr class="d-flex" *ngFor="let temp of books | orderBy: key : reverse | filter:appcomponent.filter | paginate: { itemsPerPage: 10, currentPage: p }">
