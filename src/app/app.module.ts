@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { Ng2OrderModule } from 'ng2-order-pipe';
@@ -13,10 +13,12 @@ import { ProductService } from './services/product.service';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { RatingModule } from 'ng-starrating';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 const routes: Routes = [
   
+  {path:'checkout', component:CheckoutComponent},
   {path:'cart', component:CartDetailsComponent},
   {path: 'books', component: BookListComponent},
   {path: '', redirectTo: '/books', pathMatch: 'full'},
@@ -27,7 +29,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     BookListComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -38,7 +41,8 @@ const routes: Routes = [
     Ng2SearchPipeModule,
     FormsModule,
     RatingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
