@@ -44,7 +44,7 @@ export class BookListComponent implements OnInit {
     }
 
     //sorting
-  key: string = 'price'; //set default
+  key: string = ''; //set default
   reverse: boolean = false;
   sort(key:any){
     this.key = key;

@@ -5,22 +5,24 @@
             <input type="checkbox" [checked]="!showIsbn" (change)="showIsbn=!showIsbn"> Hide ISBN       
             <input type="checkbox" [checked]="!showLang" (change)="showLang=!showLang"> Hide Language
             <div class="table table-responsive">
-                <table class="table table-dark">
-                    <thead class="thead-light">
+                <table class="table">
+                    <thead class="thead-dark">
                         <tr class="d-flex">
-                            <th class="col-4" (click)="sort('title')">Title
-                                <span class="glyphicon" *ngIf="key =='title'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                            </th>
-                            <th class="col-2" scope="col" *ngIf="showAuthor">Author
-                                <span class="glyphicon" *ngIf="key =='authors'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                            </th>
-                            <th class="col-1" (click)="sort('average_rating')">Rating
-                                <span class="glyphicon sort-icon" *ngIf="key =='average_rating'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                            </th>
+                            <th class="col-4" (click)="sort('title')">
+                                <span *ngIf="reverse && key=='title'" class="material-icons md-10">expand_less</span>
+                                <span *ngIf="!reverse && key=='title'" class="material-icons md-10">expand_more</span>
+                                <span *ngIf="key!='title'" class="material-icons">unfold_more</span>  Title</th>
+                            <th class="col-2" scope="col" *ngIf="showAuthor">Author</th>
+                            <th class="col-1" (click)="sort('average_rating')">
+                                <span *ngIf="reverse && key=='average_rating'" class="material-icons md-10">expand_less</span>
+                                <span *ngIf="!reverse && key=='average_rating'" class="material-icons md-10">expand_more</span>
+                                <span *ngIf="key!='average_rating'" class="material-icons">unfold_more</span>  Rating</th>
                             <th class="col-2" scope="col" *ngIf="showIsbn">ISBN</th>
                             <th class="col-1" scope="col" *ngIf="showLang">Language</th>
-                            <th class="col-1" (click)="sort('price')">Price
-                                <span class="glyphicon sort-icon" *ngIf="key =='price'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            <th class="col-1" (click)="sort('price')">
+                                <span *ngIf="reverse && key=='price'" class="material-icons md-10">expand_less</span>
+                                <span *ngIf="!reverse && key=='price'" class="material-icons md-10">expand_more</span>
+                                <span *ngIf="key!='price'" class="material-icons">unfold_more</span> Price
                             </th>
                             <th routerLink="/cart" class="col-1">Add to cart</th>
                         </tr>
